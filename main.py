@@ -1,16 +1,21 @@
-# This is a sample Python script.
+from game_engine import GameEngine
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+GAME_FPS = 20
+SCREEN_SIZE = [800, 800]
+CHARACTER_SIZE = [50, 20]
+CHARACTER_COLOUR = (200, 50, 0)
+OBSTACLE_SIZE = [100, 100]
 
 
-# Press the green button in the gutter to run the script.
+def main(params):
+    game_engine = GameEngine(params)
+
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    game_parameters = {'GAME_FPS': GAME_FPS,
+                       'SCREEN_SIZE': SCREEN_SIZE,
+                       'CHARACTER_SIZE': CHARACTER_SIZE,
+                       'CHARACTER_COLOUR': CHARACTER_COLOUR,
+                       'OBSTACLE_SIZE': OBSTACLE_SIZE}
+    main(game_parameters)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
