@@ -57,13 +57,12 @@ class GameEngine:
         self.obstacle_list = [[random.randint(200, 600), random.randint(200, 600), i] for i in range(100, 5000, 1000)]
 
     def _update_obstacle(self):
-        speed = 10
+        speed = self.character.speed
         for i in range(0, len(self.obstacle_list)):
             self.obstacle_list[i][2] -= speed
             if self.obstacle_list[i][2] <= 0:
                 if self.is_inside(self.obstacle_list[i]):
                     self.points += 1
-                    print('point')
 
                 self.obstacle_list[i] = [random.randint(200, 600), random.randint(200, 600), 5000]
 

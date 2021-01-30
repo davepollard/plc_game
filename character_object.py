@@ -6,13 +6,18 @@ class CharacterObject:
     def __init__(self, params):
         self.screen_size = params['SCREEN_SIZE']
         self.size = params['CHARACTER_SIZE']
+        self.controller_type = params['CONTROLLER_SELECTION']
         self.bounce_coefficient = 0.9
 
         self.init_position = [i/2 for i in self.screen_size]
+        self.init_position.append(0)  # Z position
         self.position = self.init_position.copy()
-        self.velocity = [0, 0]
+        self.velocity = [0, 0, 0]
 
-        self.controller = Controller()
+        if self.controller_type == 0:
+            self.controller = Controller()
+        else:
+            raise Exception("Unrecognised controller type")
 
         self.mass = 20
 
@@ -33,4 +38,10 @@ class CharacterObject:
 
     @property
     def current_position(self):
-        return self.position
+        # Returns XY position
+        return self.position[0:2]
+
+    @property
+    def speed(self):
+        # Returns Z speed
+        return self.velocity[2]
